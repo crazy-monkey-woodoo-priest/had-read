@@ -11,10 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151107142738) do
+ActiveRecord::Schema.define(version: 20151107230045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "commits", force: :cascade do |t|
+    t.string   "sha"
+    t.string   "author"
+    t.text     "message"
+    t.jsonb    "links"
+    t.datetime "commited_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.datetime "processed_at"
+  end
+
+  add_index "commits", ["author"], name: "index_commits_on_author", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
