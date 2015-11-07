@@ -38,13 +38,15 @@ RSpec.describe ReadingLogProcessor do
           .to change { Commit.with_author(username).count }
           .by(4)
 
-        commit = Commit.first(2).last
-        expect(commit.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
+        commits = Commit.all[1..4]
+        expect(commits.first.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
 
         commit = Commit.last
-        expect(commit.sha).to eq 'fda59c6971950cc39f1f7526eef4b04f5c27a22c'
+        expect(commits.last.sha).to eq 'fda59c6971950cc39f1f7526eef4b04f5c27a22c'
       end
     end
   end
 
+  describe '#process_commits', vcr: { cassette_name: "github-compare" } do
+  end
 end
