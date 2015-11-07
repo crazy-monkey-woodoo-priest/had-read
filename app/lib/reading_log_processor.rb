@@ -5,7 +5,7 @@ class ReadingLogProcessor
     @username = username
   end
 
-  def pull_commits(last_sha)
+  def pull_commits
     commits = []
 
     ReadingLogExtractor::Processor
@@ -22,12 +22,6 @@ class ReadingLogProcessor
     Commit.transaction do
       commits.each { |c| c.save! }
     end
-  end
-
-  def process_commits(sha1, sha2)
-    ReadingLogExtractor::Processor
-      .new(username: username, gh_facade: gh_facade)
-      .content(sha1, sha2)
   end
 
   private
@@ -48,5 +42,15 @@ class ReadingLogProcessor
 
     def timeparser(js_time)
       Time.parse(js_time)
+    end
+
+    def content(sha1, sha2)
+      ReadingLogExtractor::Processor
+        .new(username: username, gh_facade: gh_facade)
+        .content(sha1, sha2)
+    end
+
+    def last_sha
+      Commit.latest_commit(username).try(:sha)
     end
 end

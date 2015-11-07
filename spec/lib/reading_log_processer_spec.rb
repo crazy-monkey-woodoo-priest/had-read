@@ -6,7 +6,7 @@ RSpec.describe ReadingLogProcessor do
 
   describe '#pull_commits', vcr: { cassette_name: "github-commits" } do
     context 'given no previous commits' do
-      let(:trigger) { processor.pull_commits(nil) }
+      let(:trigger) { processor.pull_commits }
 
       it 'should create all commits' do
         expect { trigger }
@@ -27,14 +27,18 @@ RSpec.describe ReadingLogProcessor do
     end
 
     context 'given previous commits' do
-      let(:trigger) { processor.pull_commits('9c67600af1b176e61d37c94bb871344b79244882') } # position 5
+      let(:trigger) { processor.pull_commits } # position 5
+
+      before do
+        create :commit, author: username, sha: '9c67600af1b176e61d37c94bb871344b79244882'
+      end
 
       it 'should create all commits' do
         expect { trigger }
           .to change { Commit.with_author(username).count }
-          .from(0).to(4)
+          .by(4)
 
-        commit = Commit.first
+        commit = Commit.first(2).last
         expect(commit.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
 
         commit = Commit.last
@@ -42,4 +46,5 @@ RSpec.describe ReadingLogProcessor do
       end
     end
   end
+
 end
