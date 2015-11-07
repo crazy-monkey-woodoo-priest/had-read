@@ -119,6 +119,8 @@ GEM
       rack (~> 1.2)
     pg (0.18.3)
     puma (2.15.2)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   jquery-rails
   pg
   puma
+  quiet_assets
   rails (= 4.2.4)
   rspec-rails
   sass-rails (~> 5.0)
