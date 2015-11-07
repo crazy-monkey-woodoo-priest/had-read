@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/had-read/reading_log_extractor.git
+  revision: 2ea6eedd62adbef893b42f6726fa84b65c3c21b3
+  specs:
+    reading_log_extractor (0.1.0)
+      github_api
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -254,7 +261,6 @@ DEPENDENCIES
   capybara-rails
   coffee-rails (~> 4.1.0)
   foreman
-  github_api
   inline_svg
   jbuilder (~> 2.0)
   jquery-rails
@@ -263,6 +269,7 @@ DEPENDENCIES
   puma
   quiet_assets
   rails (= 4.2.4)
+  reading_log_extractor!
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

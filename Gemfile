@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'foreman'
 
-gem 'github_api'
+gem 'reading_log_extractor', github: 'had-read/reading_log_extractor'
 
 gem 'inline_svg'
 
