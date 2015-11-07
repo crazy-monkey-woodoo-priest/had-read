@@ -19,8 +19,6 @@ gem 'therubyracer', platforms: :ruby
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -31,12 +29,15 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'foreman'
 
-gem 'reading_log_extractor', github: 'had-read/reading_log_extractor'
+gem 'responders'
 
-gem 'inline_svg'
+# github API comunication with reading-log repo
+gem 'reading_log_extractor', github: 'had-read/reading_log_extractor'
 
 # markup html via slim
 gem 'slim-rails'
+
+gem 'inline_svg'
 
 # bootstrap frontend
 gem 'bootstrap-sass', '~> 3.3.5'
