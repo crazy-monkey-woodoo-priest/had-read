@@ -29,6 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'foreman'
 
+# respond_with in Rails controllers
 gem 'responders'
 
 # github API comunication with reading-log repo
