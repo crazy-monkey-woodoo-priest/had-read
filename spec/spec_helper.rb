@@ -120,3 +120,12 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+def disable_vcr
+  WebMock.allow_net_connect!
+  VCR.turn_off!
+  yield
+  VCR.turn_on!
+  WebMock.disable_net_connect!
+end
+
