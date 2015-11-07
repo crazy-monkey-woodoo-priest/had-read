@@ -32,7 +32,7 @@ gem 'foreman'
 # respond_with in Rails controllers
 gem 'responders'
 
-# github API comunication with reading-log repo
+# github API comunication with reading-log repo, gem is just facade around github_api gem
 gem 'reading_log_extractor', github: 'had-read/reading_log_extractor'
 
 # markup html via slim
@@ -55,6 +55,7 @@ end
 
 group :test do
   gem 'rspec-rails'
+  gem 'shoulda-matchers', '~> 3.0'
   gem 'capybara-rails'
   gem 'webmock'
   gem 'vcr'
@@ -66,6 +67,7 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem 'spring-commands-rspec'
 
   # shut up asset pipeline
   gem 'quiet_assets'
