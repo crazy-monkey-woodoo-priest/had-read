@@ -31,6 +31,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'foreman'
 
+gem 'github_api'
+
+# markup html via slim
+gem 'slim-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
