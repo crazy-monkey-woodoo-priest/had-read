@@ -27,18 +27,18 @@ RSpec.describe ReadingLogProcessor do
     end
 
     context 'given previous commits' do
-      let(:trigger) { processor.pull_commits('acf2c4ecb9e1569aec0a78e3b1075443aadafd18') } # position 32
+      let(:trigger) { processor.pull_commits('9c67600af1b176e61d37c94bb871344b79244882') } # position 5
 
       it 'should create all commits' do
         expect { trigger }
           .to change { Commit.with_author(username).count }
-          .from(0).to(39)
+          .from(0).to(4)
 
         commit = Commit.first
         expect(commit.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
 
         commit = Commit.last
-        expect(commit.sha).to eq 'c9285d9c032a4cdb5e0edd573de38c1887f1f67c'
+        expect(commit.sha).to eq 'fda59c6971950cc39f1f7526eef4b04f5c27a22c'
       end
     end
   end
