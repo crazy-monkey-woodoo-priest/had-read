@@ -3,7 +3,24 @@ html
   head
     title HadRead
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
-    = javascript_include_tag 'application', 'data-turbolinks-track': true
     = csrf_meta_tags
   body
-    = yield
+    .wrapper
+      = render 'layouts/navbar'
+      .container
+        = yield
+
+    footer
+     .container
+       .row
+         .col-sm-8
+           h4 Links
+           ul
+             li
+               = link_to 'Rails Rumble entry', 'http://railsrumble.com/entries/232-had-read'
+               = link_to 'Rails Rumble entry', 'http://railsrumble.com/entries/232-had-read'
+         .col-sm-4
+           = inline_svg('voodoo-monkey.svg', class: 'voodoo-monkey')
+
+    = javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'
+    = javascript_include_tag 'application', 'data-turbolinks-track': true
