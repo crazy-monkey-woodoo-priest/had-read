@@ -6,7 +6,7 @@ class Commit < ActiveRecord::Base
   scope :unprocessed, ->{ where(processed_at: nil) }
   scope :processed,   ->{ where.not(processed_at: nil) }
   scope :latest,      ->{ order("commits.id DESC") }
-  scope :viewable,    ->{ select { |commits| commits.links.any?} }
+  scope :viewable,    ->{ processed.latest.select { |commits| commits.links.any? } }
 
   belongs_to :user,
     class_name: 'User',

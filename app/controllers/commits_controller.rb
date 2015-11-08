@@ -4,10 +4,10 @@ class CommitsController < ApplicationController
   def index
     if username
       set_user
-      @commits = @user.commits.latest
+      @commits = @user.commits.viewable
       @title = "#{@user.username}'s reading log"
     else
-      @commits = Commit.processed.latest
+      @commits = Commit.viewable
       @title = "Latest Commits"
     end
   end
