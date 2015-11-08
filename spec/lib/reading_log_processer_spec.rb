@@ -21,6 +21,7 @@ RSpec.describe ReadingLogProcessor do
         expect(commit.message).to eq 'Update reading-log.md'
         expect(commit.commited_at).to eq Time.parse('Wed, 04 Nov 2015 08:12:44 UTC +00:00')
         expect(commit.author).to eq username
+        expect(commit.avatar).to eq 'https://avatars.githubusercontent.com/u/721990?v=3'
         expect(commit.processed_at).to be nil
       end
     end

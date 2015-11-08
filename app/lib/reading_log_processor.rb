@@ -16,6 +16,7 @@ class ReadingLogProcessor
         commits << Commit.new
           .tap {|c| c.sha         = log_commit.sha }
           .tap {|c| c.author      = log_commit.author }
+          .tap {|c| c.avatar      = log_commit.avatar }
           .tap {|c| c.message     = log_commit.message }
           .tap {|c| c.commited_at = timeparser(log_commit.date) }
       end
