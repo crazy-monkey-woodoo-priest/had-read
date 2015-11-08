@@ -4,7 +4,7 @@ h1= @title
   - @commits.non_empty.each do |commit|
     = render 'commit', commit: commit
 
-  - if @commits
+  - if @user
     = link_to(refresh_user_path(@user), class: 'btn btn-danger btn-large') do
       i.fa.fa-refresh
       | Refresh
