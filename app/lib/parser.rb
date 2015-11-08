@@ -10,7 +10,7 @@ class Parser
 
   def call
     @mutex.synchronize do
-      raw_content.each_line do |line|
+      diff_file_lines.each do |line|
         case line
         when /^[+]\*\s+\w/
           additions << parse_line(line)
@@ -23,6 +23,11 @@ class Parser
   end
 
   private
+    def diff_file_lines
+      # if there was no change with 'reading.log raw_content is nil
+      raw_content ? raw_content.each_line : []
+    end
+
     def parse_line(line)
       message = (msg = line.match(/\s+#(.*)$/)) ? msg[1].strip : nil
       url = URI.extract(line).first

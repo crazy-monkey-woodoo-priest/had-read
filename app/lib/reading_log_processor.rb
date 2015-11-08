@@ -10,7 +10,8 @@ class ReadingLogProcessor
 
     ReadingLogExtractor::Processor
       .new(username: username, gh_facade: gh_facade)
-      .latest_commits(last_sha)
+      .latest_commits(last_sha)  # in ASC order
+      .reverse # DESC order
       .each do |log_commit|
         commits << Commit.new
           .tap {|c| c.sha         = log_commit.sha }

@@ -14,15 +14,14 @@ RSpec.describe ReadingLogProcessor do
           .from(0).to(71)
 
         commit = Commit.first
+        expect(commit.sha).to eq 'cdd7aacc9cdd1021083dc39dc2810fc3bc9cacac'
 
+        commit = Commit.last
         expect(commit.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
         expect(commit.message).to eq 'Update reading-log.md'
         expect(commit.commited_at).to eq Time.parse('Wed, 04 Nov 2015 08:12:44 UTC +00:00')
         expect(commit.author).to eq username
         expect(commit.processed_at).to be nil
-
-        commit = Commit.last
-        expect(commit.sha).to eq 'cdd7aacc9cdd1021083dc39dc2810fc3bc9cacac'
       end
     end
 
@@ -39,8 +38,8 @@ RSpec.describe ReadingLogProcessor do
           .by(4)
 
         commits = Commit.all[1..4]
-        expect(commits.first.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
-        expect(commits.last.sha).to eq 'fda59c6971950cc39f1f7526eef4b04f5c27a22c'
+        expect(commits.first.sha).to eq 'fda59c6971950cc39f1f7526eef4b04f5c27a22c'
+        expect(commits.last.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
       end
     end
   end

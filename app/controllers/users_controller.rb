@@ -16,7 +16,9 @@ class UsersController < ApplicationController
   end
 
   def refresh
-    @user.username
+    redirect_to user_path(@user), notice: "Refresh of #{@user.username} log successful"
+    ReadingLogProcessor.new(username: @user.username)
+      .tap { |r| r.process_commits }
   end
 
   private
