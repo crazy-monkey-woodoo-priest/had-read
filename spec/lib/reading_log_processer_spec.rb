@@ -113,3 +113,18 @@ RSpec.describe ReadingLogProcessor do
     end
   end
 end
+
+RSpec.describe ReadingLogProcessor, integration: true, vcr: { cassette_name: "github-repo-list" } do
+  subject { described_class.new(username: username) }
+
+  describe '#repo_exist?' do
+    context 'Given user with valid reading-log repo' do
+
+      let(:username) { 'equivalent' }
+
+      it 'should return true' do
+        expect(subject.user_prepared?).to be true
+      end
+    end
+  end
+end

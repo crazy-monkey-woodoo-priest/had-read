@@ -5,6 +5,12 @@ class ReadingLogProcessor
     @username = username
   end
 
+  def user_prepared?
+    ReadingLogExtractor::Processor
+      .new(username: username, gh_facade: gh_facade)
+      .repo_exist?
+  end
+
   def pull_commits
     commits = []
 
