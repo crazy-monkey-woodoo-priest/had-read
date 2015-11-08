@@ -29,6 +29,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
 gem 'foreman'
 
+# heroku
+gem 'rails_12factor'
+
 # respond_with in Rails controllers
 gem 'responders'
 

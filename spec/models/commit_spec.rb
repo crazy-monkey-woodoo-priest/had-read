@@ -43,7 +43,7 @@ RSpec.describe Commit, type: :model do
     end
 
     context 'when there is no processed commit' do
-      it { expect(subject).to eq 'HEAD' }
+      it { expect(subject).to eq Commit::FIRST_SHA }
     end
   end
 end

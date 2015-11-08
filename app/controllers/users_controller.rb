@@ -16,8 +16,7 @@ class UsersController < ApplicationController
   end
 
   def refresh
-    @user.
-
+    @user.username
   end
 
   private
