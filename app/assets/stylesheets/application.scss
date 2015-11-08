@@ -45,6 +45,10 @@ footer {
   h4 {
     small {
       margin-right: 1em;
+      display: none;
+      @media screen and (min-width: $screen-md-min) {
+        display: inline-block;
+      }
     }
     a {
       color: $headings-color;
@@ -53,6 +57,10 @@ footer {
   .ruby {
     font-size: $footersize;
     color: #eee;
+    display: none;
+    @media screen and (min-width: $screen-md-min) {
+      display: block;
+    }
   }
 }
 

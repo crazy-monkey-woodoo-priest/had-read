@@ -6,10 +6,12 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      = link_to 'Had Read', root_path, class: "navbar-brand"
+      = link_to root_path, class: "navbar-brand" do
+        i.fa.fa-book
+        | Had Read
     #main-navbar.collapse.navbar-collapse
 
-      form.navbar-form.navbar-left role="search" 
+      form.navbar-form.navbar-left role="search"
         .form-group
           input.form-control placeholder="Github Username" type="text" /
         button.btn.btn-info type="submit"  Submit
