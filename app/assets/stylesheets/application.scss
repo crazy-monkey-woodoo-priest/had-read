@@ -20,8 +20,8 @@ body, html {
 
 .voodoo-monkey { 
   display: block;
-  width: 230px;
-  height: 230px;
+  height: 180px;
+  margin-top: 10px;
 }
 
 
@@ -41,15 +41,19 @@ footer, .sticky-push {
 }
 
 footer {
-  background: {
-    color: silver;
+  h4 {
+    small {
+      margin-right: 1em;
+    }
+    a {
+      color: $headings-color;
+    }
+  }
+  .ruby {
+    font-size: $footersize;
+    color: #eee;
   }
 }
-
-
-
-
-
 
 .media-body {
 

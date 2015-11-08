@@ -17,7 +17,9 @@
           li= link_link(lo)
   .media-right
     - if commit.link_objects.hidden.any?
-      button.btn.btn-info data-target="#link-#{commit.id}" data-toggle="collapse" type="button" More
+      button.btn.btn-info data-target="#link-#{commit.id}" data-toggle="collapse" type="button"
+        i.fa.fa-angle-double-down
+        |More
 
 
 
