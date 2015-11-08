@@ -1,6 +1,9 @@
 FactoryGirl.define do
   factory :commit do
-    
-  end
+    author 'jhon'
 
+    trait :processed do
+      processed_at Time.now.midday
+    end
+  end
 end
