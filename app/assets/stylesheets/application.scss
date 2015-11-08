@@ -3,6 +3,9 @@
 @import "bootswatch/united/variables";
 @import "bootstrap";
 
+body, html {
+  height: 100%;
+}
 
 .voodoo-monkey { 
   display: block;
@@ -11,17 +14,22 @@
 }
 
 
-@footersize = 230;
+$footersize: 230px;
+$footer-margin: 30px;
 
-.wrapper {
-  margin-bottom: footersize;
+body {
+  .wrapper {
+    min-height: 100%;
+    margin-bottom: -$footersize - $footer-margin
+  }
+}
+
+footer, .sticky-push {
+  height: $footersize;
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: footersize;
+  margin-top: $footer-margin;
   background: {
     color: silver;
   }
