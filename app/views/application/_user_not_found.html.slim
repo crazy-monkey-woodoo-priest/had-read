@@ -1,0 +1,9 @@
+h1 User #{username} is not registered
+
+.row
+  .col-md-6
+    p This user is not using this service at this point :(
+
+    p If you are <strong>#{username}</strong>, go to #{link_to 'Sign Up', new_user_path}
+  .col-md-
+    = inline_svg 'mono', class: "mood-svg"

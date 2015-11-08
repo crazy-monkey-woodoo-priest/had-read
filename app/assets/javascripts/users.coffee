@@ -1,3 +1,4 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+$(document).on 'ready', ->
+  $('#main-navbar form').submit (event) ->
+    event.preventDefault()
+    window.location.href = "/u/#{$.trim($(this).find('input').val())}"

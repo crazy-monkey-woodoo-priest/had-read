@@ -57,7 +57,6 @@ footer {
 }
 
 .media-body {
-
   em {
     font-style: normal;
     font-weight: normal;
@@ -66,3 +65,28 @@ footer {
     font-size: $font-size-small;
   }
 }
+
+.mood-svg {
+  height: 150px;
+  margin: 3em auto;
+  display: block;
+  @media screen and (min-width: $screen-md-min) {
+    display: inline-block;
+    height: 300px;
+    margin: 1em 0;
+    float: right;
+  }
+}
+
+#main-navbar {
+  form {
+    button {
+      display: none;
+      @media screen and (min-width: $screen-md-min) {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+

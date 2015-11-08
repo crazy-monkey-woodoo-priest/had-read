@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get '/users/:user_username', to: 'commits#index', as: 'user'
+  get '/u/:user_username', to: 'commits#index', as: 'user'
 
   resources :users, only: [:create, :new], param: :username do
     resources :commits, only: [:index]

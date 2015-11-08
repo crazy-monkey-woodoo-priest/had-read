@@ -8,25 +8,25 @@ nav.navbar.navbar-default
         span.icon-bar
       = link_to 'Had Read', root_path, class: "navbar-brand"
     #main-navbar.collapse.navbar-collapse
-      ul.nav.navbar-nav
-        - if @user
-          li
-            = link_to(refresh_user_path(@user), class: 'btn btn-primary') do
-              i.fa.fa-refresh
-              | Refresh
-        /li.active
-          /a href="#" 
-            /| Link
-            /span.sr-only (current)
-
 
       form.navbar-form.navbar-left role="search" 
         .form-group
           input.form-control placeholder="Github Username" type="text" /
         button.btn.btn-info type="submit"  Submit
+
+
+      ul.nav.navbar-nav
+        - if @user && @user.persisted?
+          li
+            = link_to(refresh_user_path(@user)) do
+              i.fa.fa-refresh
+              | Refresh
+
       ul.nav.navbar-nav.navbar-right
         li
-          = link_to 'Sign Up', new_user_path
+          = link_to new_user_path do
+            i.fa.fa-sign-in
+            | Sign Up
 
 
 
