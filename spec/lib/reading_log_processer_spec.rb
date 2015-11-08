@@ -46,22 +46,46 @@ RSpec.describe ReadingLogProcessor do
   end
 
   describe '#process_commits', vcr: { cassette_name: "github-compare" } do
+    let(:username) { 'had-read-tester' }
+
     before do
-      [
-        "867515c9e145b8a35b68ad8dcbd6ba5a4e39b0c9",
-        "5680d1db3ab4ec2bf76c8ad6bbec3ec0ef8303c8",
-        "fda59c6971950cc39f1f7526eef4b04f5c27a22c"
-      ].each do |sha|
+      %w(
+        c8df4d5a39224e14496996588112b7f834b7ea7f
+        abd53248e6b5875436651b92f4edc0631a54f374
+        1e996dc5607c3a52e8c420a3ea1b8e6ff7187846
+        9c1648f0ed4b0d697e89a39a8fa79a807a0f5136
+      ).each do |sha|
         create :commit, sha: sha, author: username
       end
+
+      processor.process_commits
+    end
+
+    let(:commits) { Commit.with_author(username) }
+
+    it do
+      expect(commits[0].links).to match_array([])
     end
 
     it do
-      subject.process_commits
+      expect(commits[1].links).to match_array([
+        {"url"=>"https://google.com", "message"=>"google hah hah"}
+      ])
+    end
 
-      a =  Commit.pluck(:links)
-      p a
+    it do
+      expect(commits[2].links).to match_array([
+        {"url"=>"http://had-read.r15.railsrumble.com/", "message"=>"cool appp for bookmarks"},
+        {"url"=>"https://github.com/had-read/had-read", "message"=>nil}
+      ])
+    end
 
+    it do
+      expect(commits[3].links).to match_array([
+        {"url"=>"http://www.eq8.eu", "message"=>"EquiValent website"},
+        {"url"=>"http://daringfireball.net/projects/markdown/syntax#list", "message"=>nil},
+        {"url"=>"https://help.github.com/articles/github-flavored-markdown/", "message"=>nil}
+      ])
     end
   end
 end

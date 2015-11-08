@@ -25,10 +25,15 @@ class ReadingLogProcessor
   end
 
   def process_commits
-    to_process_shas_groups.each do |sha1, sha2|
+    shas_groups_for_processing.each do |sha1, sha2|
       Commit
         .find_by!(sha: sha1 )
-        .tap { |c| c.links = { text: content(sha1, sha2) } }
+        .tap do |c|
+          c.links = Parser
+            .new(content(sha2, sha1))
+            .tap { |r| r.call }
+            .additions
+        end
         .tap { |c| c.set_processed }
         .save!
     end
@@ -68,10 +73,10 @@ class ReadingLogProcessor
       Commit.latest_commit(username).try(:sha)
     end
 
-    def to_process_shas_groups
+    def shas_groups_for_processing
       (unprocessed_shas.concat([last_proccessed_sha]))
         .each_cons(2)
-        .map { |a| a.reverse }
+        .map { |a| a }
     end
 
       def unprocessed_shas

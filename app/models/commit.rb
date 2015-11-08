@@ -1,4 +1,7 @@
 class Commit < ActiveRecord::Base
+  # as the project is always forked, there will be this sha present
+  FIRST_SHA = 'cdd7aacc9cdd1021083dc39dc2810fc3bc9cacac'
+
   scope :with_author, ->(username){ where(author: username) }
   scope :unprocessed, ->{ where(processed_at: nil) }
   scope :processed,   ->{ where.not(processed_at: nil) }
@@ -8,7 +11,7 @@ class Commit < ActiveRecord::Base
   end
 
   def self.latest_processed_sha(username)
-    with_author(username).processed.pluck(:sha).first || 'HEAD'
+    with_author(username).processed.pluck(:sha).first || FIRST_SHA
   end
 
   def self.unprocessed_shas(username)

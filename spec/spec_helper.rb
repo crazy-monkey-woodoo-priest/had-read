@@ -26,6 +26,10 @@ module Tests
     specs_root.join('fixtures')
   end
 
+  def self.fixtures_file(filename)
+    fixtures.join(filename).to_s
+  end
+
   def self.specs_root
     project_root.join('spec')
   end
