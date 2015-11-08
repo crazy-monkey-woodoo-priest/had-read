@@ -6,7 +6,7 @@ nav.navbar.navbar-default
         span.icon-bar
         span.icon-bar
         span.icon-bar
-      a.navbar-brand href="#"  Brand
+      = link_to 'Had Read', root_path, class: "navbar-brand"
     #main-navbar.collapse.navbar-collapse
       ul.nav.navbar-nav
         li.active
@@ -34,25 +34,11 @@ nav.navbar.navbar-default
               a href="#"  One more separated link
       form.navbar-form.navbar-left role="search" 
         .form-group
-          input.form-control placeholder="Search" type="text" /
-        button.btn.btn-default type="submit"  Submit
+          input.form-control placeholder="Github Username" type="text" /
+        button.btn.btn-info type="submit"  Submit
       ul.nav.navbar-nav.navbar-right
         li
-          a href="#"  Link
-        li.dropdown
-          a.dropdown-toggle aria-expanded="false" aria-haspopup="true" data-toggle="dropdown" href="#" role="button" 
-            | Dropdown
-            span.caret
-          ul.dropdown-menu
-            li
-              a href="#"  Action
-            li
-              a href="#"  Another action
-            li
-              a href="#"  Something else here
-            li.divider role="separator" 
-            li
-              a href="#"  Separated link
+          = link_to 'Sign Up', new_user_path
 
 
 

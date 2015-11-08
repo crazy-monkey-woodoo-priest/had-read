@@ -1,7 +1,18 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
+
+$headings-font-family: 'Bangers', cursive;
+$brand-primary: #794522;
+
 @import "bootswatch/united/variables";
 @import "bootstrap";
+@import 'font-awesome';
+
+i.fa {
+  margin: {
+    right: 0.5em;
+  }
+}
 
 body, html {
   height: 100%;
@@ -25,11 +36,11 @@ body {
 }
 
 footer, .sticky-push {
+  margin-top: $footer-margin;
   height: $footersize;
 }
 
 footer {
-  margin-top: $footer-margin;
   background: {
     color: silver;
   }

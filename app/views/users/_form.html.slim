@@ -1,0 +1,12 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    #error_explanation.alert.alert-danger
+      h4= "#{pluralize(@user.errors.count, "error")} occured:"
+      ul
+        - @user.errors.full_messages.each do |message|
+          li = message
+
+  .form-group
+    = f.label :username, 'Github Username'
+    = f.text_field :username, placeholder: "johnny_bravo", class: 'form-control'
+  button.btn.btn-primary type="submit"  Submit

@@ -32,6 +32,9 @@ gem 'foreman'
 # respond_with in Rails controllers
 gem 'responders'
 
+# icons
+gem "font-awesome-rails"
+
 # github API comunication with reading-log repo, gem is just facade around github_api gem
 gem 'reading_log_extractor', github: 'had-read/reading_log_extractor'
 
