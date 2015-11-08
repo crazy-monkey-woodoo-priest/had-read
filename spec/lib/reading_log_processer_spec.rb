@@ -68,6 +68,10 @@ RSpec.describe ReadingLogProcessor do
     end
 
     it do
+      expect(commits[0].processed_at).to be_within(1.minute).of(Time.now)
+    end
+
+    it do
       expect(commits[1].links).to match_array([
         {"url"=>"https://google.com", "message"=>"google hah hah"}
       ])
