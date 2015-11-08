@@ -5,6 +5,7 @@ $headings-font-family: 'Bangers', cursive;
 $brand-primary: #794522;
 
 @import "bootswatch/united/variables";
+$link-color: $brand-info;
 @import "bootstrap";
 @import 'font-awesome';
 
