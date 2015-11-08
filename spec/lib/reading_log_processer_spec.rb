@@ -54,7 +54,9 @@ RSpec.describe ReadingLogProcessor do
         abd53248e6b5875436651b92f4edc0631a54f374
         1e996dc5607c3a52e8c420a3ea1b8e6ff7187846
         9c1648f0ed4b0d697e89a39a8fa79a807a0f5136
-      ).each do |sha|
+        419350cfa751825c9c253a3a0ff215df4a809e25
+        cdd7aacc9cdd1021083dc39dc2810fc3bc9cacac
+      ).reverse.each do |sha|
         create :commit, sha: sha, author: username
       end
 
@@ -64,38 +66,7 @@ RSpec.describe ReadingLogProcessor do
     let(:commits) { Commit.with_author(username) }
 
     it do
-      expect(commits[0].links).to match_array([])
-    end
-
-    it do
-      expect(commits[0].processed_at).to be_within(1.minute).of(Time.now)
-    end
-
-    it do
-      expect(commits[1].links).to match_array([
-        {"url"=>"https://google.com", "message"=>"google hah hah"}
-      ])
-    end
-
-    it do
-      expect(commits[2].links).to match_array([
-        {
-          "url"=>"http://had-read.r15.railsrumble.com/",
-          "message"=>"cool appp for bookmarks",
-        },
-        {
-          "url"=>"https://github.com/had-read/had-read",
-          "message"=>nil,
-        }
-      ])
-    end
-
-    it do
-      expect(commits[3].links).to match_array([
-        {
-          "url"=>"http://www.eq8.eu",
-          "message"=>"EquiValent website",
-        },
+      expect(commits[0].links).to match_array([
         {
           "url"=>"http://daringfireball.net/projects/markdown/syntax#list",
           "message"=>nil,
@@ -105,6 +76,40 @@ RSpec.describe ReadingLogProcessor do
           "message"=>nil,
         }
       ])
+    end
+
+    it do
+      expect(commits[1].links).to match_array([
+        {"url"=>"http://daringfireball.net/projects/markdown/syntax#list", "message"=>nil},
+        {"url"=>"https://help.github.com/articles/github-flavored-markdown/", "message"=>nil}
+      ])
+    end
+
+    it do
+      expect(commits[1].processed_at).to be_within(1.minute).of(Time.now)
+    end
+
+    it do
+      expect(commits[2].links).to match_array([
+        {"url"=>"http://www.eq8.eu", "message"=>"EquiValent website"}
+      ])
+    end
+
+    it do
+      expect(commits[3].links).to match_array([
+        {"url"=>"http://had-read.r15.railsrumble.com/", "message"=>"cool appp for bookmarks"},
+        {"url"=>"https://github.com/had-read/had-read", "message"=>nil}
+      ])
+    end
+
+    it do
+      expect(commits[4].links).to match_array([
+        {"url"=>"https://google.com", "message"=>"google hah hah"}
+      ])
+    end
+
+    it do
+      expect(commits[5].links).to match_array([])
     end
   end
 end
