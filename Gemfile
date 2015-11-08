@@ -35,6 +35,10 @@ gem 'rails_12factor'
 # respond_with in Rails controllers
 gem 'responders'
 
+# pagination
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
 # icons
 gem "font-awesome-rails"
 
