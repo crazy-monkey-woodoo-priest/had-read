@@ -1,5 +1,13 @@
 language: ruby
 rvm:
   - 2.2.3
+addons:
+  postgresql: "9.4"
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
 before_install: gem install bundler -v 1.10.6
 
