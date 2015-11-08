@@ -40,13 +40,28 @@ RSpec.describe ReadingLogProcessor do
 
         commits = Commit.all[1..4]
         expect(commits.first.sha).to eq 'd7812cad66d725b43c0a362f2fd318487bbb1cae'
-
-        commit = Commit.last
         expect(commits.last.sha).to eq 'fda59c6971950cc39f1f7526eef4b04f5c27a22c'
       end
     end
   end
 
   describe '#process_commits', vcr: { cassette_name: "github-compare" } do
+    before do
+      [
+        "867515c9e145b8a35b68ad8dcbd6ba5a4e39b0c9",
+        "5680d1db3ab4ec2bf76c8ad6bbec3ec0ef8303c8",
+        "fda59c6971950cc39f1f7526eef4b04f5c27a22c"
+      ].each do |sha|
+        create :commit, sha: sha, author: username
+      end
+    end
+
+    it do
+      subject.process_commits
+
+      a =  Commit.pluck(:links)
+      p a
+
+    end
   end
 end
