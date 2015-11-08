@@ -4,9 +4,12 @@
       = image_tag commit.avatar_small, alt: commit.author, class: 'media-object'
   .media-body
     h4.media-heading
+      = link_to commit.author do
+        i.fa.fa-github
       = commit.message
-      small= link_to 'Authors Commit', commit.author
-    ul
+    div
+      em= commit.sha
+    ul.list-unstyled
       - commit.link_objects.visible.each do |lo|
         li= link_link(lo)
       div id="link-#{commit.id}" class="collapse"

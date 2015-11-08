@@ -10,6 +10,6 @@ module ApplicationHelper
   end
 
   def link_link(link_object)
-    link_to(link_object.url, link_object.url, alt: link_object.message)
+    link_to(link_object.url, link_object.url, title: link_object.message)
   end
 end

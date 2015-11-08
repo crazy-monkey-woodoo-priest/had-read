@@ -29,7 +29,7 @@ class ReadingLogProcessor
   def process_commits
     shas_groups_for_processing.each do |sha1, sha2|
       Commit
-        .find_by!(sha: sha1 )
+        .find_by!(sha: sha2 )
         .tap do |c|
           c.links = Parser
             .new(content(sha1, sha2))
