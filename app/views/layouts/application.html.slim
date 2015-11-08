@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title HadRead
+    title= "Had Read - #{ @title || 'Reading log' }"
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': true
     = csrf_meta_tags
     link href='https://fonts.googleapis.com/css?family=Bangers' rel='stylesheet' type='text/css'

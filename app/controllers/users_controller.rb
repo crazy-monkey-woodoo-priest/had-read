@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include UserConcern
+
   before_action :set_user, only: [:show, :refresh]
 
   def show
@@ -16,9 +18,10 @@ class UsersController < ApplicationController
   end
 
   def refresh
-    redirect_to user_path(@user), notice: "Refresh of #{@user.username} log successful"
     ReadingLogProcessor.new(username: @user.username)
+      .tap { |r| r.pull_commits }
       .tap { |r| r.process_commits }
+    redirect_to user_path(@user), notice: "Refresh of #{@user.username} log successful"
   end
 
   private
@@ -26,7 +29,4 @@ class UsersController < ApplicationController
       params.require(:user).permit(:username)
     end
 
-    def set_user
-      @user = User.find_by(username: params[:username])
-    end
 end

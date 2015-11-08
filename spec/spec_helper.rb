@@ -38,6 +38,10 @@ module Tests
     Pathname.new(Dir.pwd)
   end
 
+  def self.model_file(name)
+    project_root.join('app', 'models', name).to_s
+  end
+
   def self.support(filename)
     specs_root.join('support').join(filename).to_s
   end

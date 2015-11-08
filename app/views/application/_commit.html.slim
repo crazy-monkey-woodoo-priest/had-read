@@ -1,0 +1,21 @@
+.media
+  .media-left
+    = link_to commit.author_url do
+      = image_tag commit.avatar_small, alt: commit.author, class: 'media-object'
+  .media-body
+    h4.media-heading
+      = commit.message
+      small= link_to 'Authors Commit', commit.author
+    ul
+      - commit.link_objects.visible.each do |lo|
+        li= link_link(lo)
+      div id="link-#{commit.id}" class="collapse"
+        - commit.link_objects.hidden.each do |lo|
+          li= link_link(lo)
+  .media-right
+    - if commit.link_objects.hidden.any?
+      button.btn.btn-info data-target="#link-#{commit.id}" data-toggle="collapse" type="button" More
+
+
+
+

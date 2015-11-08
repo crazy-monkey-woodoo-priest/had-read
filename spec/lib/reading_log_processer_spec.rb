@@ -79,16 +79,31 @@ RSpec.describe ReadingLogProcessor do
 
     it do
       expect(commits[2].links).to match_array([
-        {"url"=>"http://had-read.r15.railsrumble.com/", "message"=>"cool appp for bookmarks"},
-        {"url"=>"https://github.com/had-read/had-read", "message"=>nil}
+        {
+          "url"=>"http://had-read.r15.railsrumble.com/",
+          "message"=>"cool appp for bookmarks",
+        },
+        {
+          "url"=>"https://github.com/had-read/had-read",
+          "message"=>nil,
+        }
       ])
     end
 
     it do
       expect(commits[3].links).to match_array([
-        {"url"=>"http://www.eq8.eu", "message"=>"EquiValent website"},
-        {"url"=>"http://daringfireball.net/projects/markdown/syntax#list", "message"=>nil},
-        {"url"=>"https://help.github.com/articles/github-flavored-markdown/", "message"=>nil}
+        {
+          "url"=>"http://www.eq8.eu",
+          "message"=>"EquiValent website",
+        },
+        {
+          "url"=>"http://daringfireball.net/projects/markdown/syntax#list",
+          "message"=>nil,
+        },
+        {
+          "url"=>"https://help.github.com/articles/github-flavored-markdown/",
+          "message"=>nil,
+        }
       ])
     end
   end

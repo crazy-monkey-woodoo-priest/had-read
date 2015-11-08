@@ -32,7 +32,7 @@ class ReadingLogProcessor
         .find_by!(sha: sha1 )
         .tap do |c|
           c.links = Parser
-            .new(content(sha2, sha1))
+            .new(content(sha1, sha2))
             .tap { |r| r.call }
             .additions
         end
