@@ -2,10 +2,31 @@ h1 Sign Up
 
 .row
   .col-md-6
-    = alert_box(type: 'success') do
-      = "This App is <strong>bananas</strong> !!!".html_safe
+    p There is no real "Sign-Up" just <strog>do following</strong>:
 
-    P There is no real "Sign-Up", all you have to do is tell us you Github username !
-    = render 'form'
+    ol
+      li Fork #{link_to 'reading-log ropository', 'https://github.com/had-read/reading-log'}  to you Github Profile
+      li Fill in your <strong>Github</strong> username to the form on the right and Submit
+      li On next page hit the Refresh Button
+      li Start commiting to your fork your links ! :)
+
+    P
+      | App will pull the commits and process them into bookmars on this website !!!
+
+    p
+      | Sorry about that "Refresh", In future this app will be listening to Github Event Webhooks
+      | but for now you need to hit "Refresh" each time you want a update
+
+    p Links should look like this
+
+    .well
+      div
+        code
+          | * http://had-read.com  # cool bookmarking site <br>
+          | * https://www.youtube.com/watch?v=sDQ8-LmWbow  # cool video
+
+    p Example fonud at #{link_to 'https://github.com/equivalent/reading-log', 'https://github.com/equivalent/reading-log'}
+
+
   .col-md-6
-    = inline_svg 'bananas', class: "mood-svg"
+    = render 'form'
